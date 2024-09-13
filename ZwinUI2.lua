@@ -8,6 +8,10 @@ local PlayerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 local UserInputService = game:GetService("UserInputService")
 local LogService = game:GetService("LogService")
 local mouse = game.Players.LocalPlayer:GetMouse()
+local RunService = game:GetService("RunService")
+local name = game.Players.LocalPlayer.DisplayName
+local filteringenabled = game.Workspace.FilteringEnabled
+local stats = game:GetService("Stats")
 
 
 local screenGui = Instance.new("ScreenGui")
@@ -21,14 +25,14 @@ local executorTab = Instance.new("TextButton")
 local outputTab = Instance.new("TextButton")
 local universalTab = Instance.new("TextButton")
 local miscelaneousTab = Instance.new("TextButton")
-local gameSpecificTab = Instance.new("TextButton")
+local scriptsTab = Instance.new("TextButton")
 local welcomeTab = Instance.new("TextButton")
 
 
 local executorFrame = Instance.new("Frame")
 local outputFrame = Instance.new("Frame")
 local universalFrame = Instance.new("Frame")
-local gameSpecificFrame = Instance.new("Frame")
+local scriptsFrame = Instance.new("Frame")
 local miscelaneousFrame = Instance.new("Frame")
 local welcomeFrame = Instance.new("Frame")
 
@@ -45,21 +49,25 @@ local universal4 = Instance.new("TextButton")
 local universal5 = Instance.new("TextButton")
 local universal6 = Instance.new("TextButton")
 
--- TODO
-local game1 = Instance.new("TextButton")
-local game2 = Instance.new("TextButton")
-local game3 = Instance.new("TextButton")
-local game4 = Instance.new("TextButton")
-local game5 = Instance.new("TextButton")
-local game6 = Instance.new("TextButton")
-local game7 = Instance.new("TextButton")
-local game8 = Instance.new("TextButton")
+local script1 = Instance.new("TextButton")
+local script2 = Instance.new("TextButton")
+local script3 = Instance.new("TextButton")
+local script4 = Instance.new("TextButton")
+local script5 = Instance.new("TextButton")
+local script6 = Instance.new("TextButton")
+local script7 = Instance.new("TextButton")
+local script8 = Instance.new("TextButton")
+local script9 = Instance.new("TextButton")
 
-local misc1 = Instance.new("TextButton")
-local misc2 = Instance.new("TextButton")
-local misc3 = Instance.new("TextButton")
-local misc4 = Instance.new("TextButton")
--- TODO
+local misc1 = Instance.new("TextLabel")
+local misc2 = Instance.new("TextLabel")
+local misc3 = Instance.new("TextLabel")
+local misc4 = Instance.new("TextLabel")
+local misc5 = Instance.new("TextLabel")
+local misc6 = Instance.new("TextLabel")
+
+local misc7 = Instance.new("TextBox")
+local misc8 = Instance.new("TextBox")
 
 screenGui.Parent = PlayerGui
 screenGui.ResetOnSpawn = false
@@ -172,16 +180,16 @@ universalTab.Text = "Universal"
 universalTab.TextColor3 = Color3.fromRGB(255, 255, 255)
 universalTab.Parent = main
 
-gameSpecificTab.Name = "Game specific scripts tab button"
-gameSpecificTab.Size = UDim2.new(0.2, 0, 0.1, 0)
-gameSpecificTab.Position = UDim2.new(0.02, 0, 0.470, 0)
-gameSpecificTab.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-gameSpecificTab.Transparency = 0.6
-gameSpecificTab.TextTransparency = 0
-gameSpecificTab.BorderSizePixel = 0
-gameSpecificTab.Text = "Game Specific"
-gameSpecificTab.TextColor3 = Color3.fromRGB(255, 255, 255)
-gameSpecificTab.Parent = main
+scriptsTab.Name = "Scripts tab button"
+scriptsTab.Size = UDim2.new(0.2, 0, 0.1, 0)
+scriptsTab.Position = UDim2.new(0.02, 0, 0.470, 0)
+scriptsTab.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+scriptsTab.Transparency = 0.6
+scriptsTab.TextTransparency = 0
+scriptsTab.BorderSizePixel = 0
+scriptsTab.Text = "Scripts"
+scriptsTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+scriptsTab.Parent = main
 
 miscelaneousTab.Name = "Miscelaneous tab button"
 miscelaneousTab.Size = UDim2.new(0.2, 0, 0.1, 0)
@@ -229,13 +237,13 @@ universalFrame.Transparency = 0.5
 universalFrame.BorderSizePixel = 0
 universalFrame.Parent = main
 
-gameSpecificFrame.Name = "Game specific tab frame"
-gameSpecificFrame.Size = UDim2.new(0.75, 0, 0.9, 0)
-gameSpecificFrame.Position = UDim2.new(0.235, 0, 0.045, 0)
-gameSpecificFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-gameSpecificFrame.Transparency = 0.5
-gameSpecificFrame.BorderSizePixel = 0
-gameSpecificFrame.Parent = main
+scriptsFrame.Name = "Game specific tab frame"
+scriptsFrame.Size = UDim2.new(0.75, 0, 0.9, 0)
+scriptsFrame.Position = UDim2.new(0.235, 0, 0.045, 0)
+scriptsFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+scriptsFrame.Transparency = 0.5
+scriptsFrame.BorderSizePixel = 0
+scriptsFrame.Parent = main
 
 miscelaneousFrame.Name = "Miscelaneous tab frame"
 miscelaneousFrame.Size = UDim2.new(0.75, 0, 0.9, 0)
@@ -259,7 +267,7 @@ function hideFrames()
     executorFrame.Visible = false
     outputFrame.Visible = false
     universalFrame.Visible = false
-    gameSpecificFrame.Visible = false
+    scriptsFrame.Visible = false
     miscelaneousFrame.Visible = false
 end
 
@@ -286,9 +294,9 @@ universalTab.MouseButton1Click:Connect(function()
     universalFrame.Visible = true
 end)
 
-gameSpecificTab.MouseButton1Click:Connect(function()
+scriptsTab.MouseButton1Click:Connect(function()
     hideFrames()
-    gameSpecificFrame.Visible = true
+    scriptsFrame.Visible = true
 end)
 
 miscelaneousTab.MouseButton1Click:Connect(function()
@@ -374,12 +382,13 @@ outputLabel.Parent = outputFrame
 outputLabel.Text = "Console output will be displayed here...\n"
 outputLabel.TextYAlignment = Enum.TextYAlignment.Top
 outputLabel.TextXAlignment = Enum.TextXAlignment.Left
+outputLabel.TextWrapped = true
 
 local function onMessageOut(message, messageType)
     local currentText = outputLabel.Text
     outputLabel.Text = currentText .. "\n" .. message
 
-    local maxLines = 14
+    local maxLines = 12
     local lines = string.split(outputLabel.Text, "\n")
 
     if #lines > maxLines then
@@ -409,7 +418,7 @@ universal2.BackgroundTransparency = 0.7
 universal2.TextTransparency = 0
 universal2.BorderSizePixel = 0
 universal2.Parent = universalFrame
-universal2.Text = "Chat Bypass"
+universal2.Text = "Energize GUI"
 
 universal3.Name = "Universal button 3"
 universal3.Size = UDim2.new(0.3, 0, 0.2, 0)
@@ -461,7 +470,7 @@ universal1.MouseButton1Click:Connect(function()
 end)
 
 universal2.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/UnknownUser2883/NotBypass/main/Haha'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/IlikeyocutgHAH12/FEEGGEG/main/%5BFE%5D%20Energize%20Animation%20Gui.txt'))()
 end)
 
 universal3.MouseButton1Click:Connect(function()
@@ -485,7 +494,277 @@ universal6.MouseButton1Click:Connect(function()
     pos = CFrame.new(pos.X,pos.Y,pos.Z)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
     end)
+    tool.Parent = game.Players.LocalPlayer.Backpack
 end)
+
+
+script1.Name = "Game specific button"
+script1.Size = UDim2.new(0.3, 0, 0.2, 0)
+script1.Position = UDim2.new()
+script1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script1.TextColor3 = Color3.fromRGB(255, 255, 255)
+script1.TextTransparency = 0
+script1.BackgroundTransparency = 0.7
+script1.Parent = scriptsFrame
+script1.Text = ""
+
+script2.Name = "Game specific button"
+script2.Size = UDim2.new(0.3, 0, 0.2, 0)
+script2.Position = UDim2.new()
+script2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script2.TextColor3 = Color3.fromRGB(255, 255, 255)
+script2.TextTransparency = 0
+script2.BackgroundTransparency = 0.7
+script2.Parent = scriptsFrame
+script2.Text = ""
+
+script3.Name = "Game specific button"
+script3.Size = UDim2.new(0.3, 0, 0.2, 0)
+script3.Position = UDim2.new()
+script3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script3.TextColor3 = Color3.fromRGB(255, 255, 255)
+script3.TextTransparency = 0
+script3.BackgroundTransparency = 0.7
+script3.Parent = scriptsFrame
+script3.Text = ""
+
+script4.Name = "Game specific button"
+script4.Size = UDim2.new(0.3, 0, 0.2, 0)
+script4.Position = UDim2.new()
+script4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script4.TextColor3 = Color3.fromRGB(255, 255, 255)
+script4.TextTransparency = 0
+script4.BackgroundTransparency = 0.7
+script4.Parent = scriptsFrame
+script4.Text = ""
+
+script5.Name = "Game specific button"
+script5.Size = UDim2.new(0.3, 0, 0.2, 0)
+script5.Position = UDim2.new()
+script5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script5.TextColor3 = Color3.fromRGB(255, 255, 255)
+script5.TextTransparency = 0
+script5.BackgroundTransparency = 0.7
+script5.Parent = scriptsFrame
+script5.Text = ""
+
+script6.Name = "Game specific button"
+script6.Size = UDim2.new(0.3, 0, 0.2, 0)
+script6.Position = UDim2.new()
+script6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script6.TextColor3 = Color3.fromRGB(255, 255, 255)
+script6.TextTransparency = 0
+script6.BackgroundTransparency = 0.7
+script6.Parent = scriptsFrame
+script6.Text = ""
+
+script7.Name = "Game specific button"
+script7.Size = UDim2.new(0.3, 0, 0.2, 0)
+script7.Position = UDim2.new()
+script7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script7.TextColor3 = Color3.fromRGB(255, 255, 255)
+script7.TextTransparency = 0
+script7.BackgroundTransparency = 0.7
+script7.Parent = scriptsFrame
+script7.Text = ""
+
+script8.Name = "Game specific button"
+script8.Size = UDim2.new(0.3, 0, 0.2, 0)
+script8.Position = UDim2.new()
+script8.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script8.TextColor3 = Color3.fromRGB(255, 255, 255)
+script8.TextTransparency = 0
+script8.BackgroundTransparency = 0.7
+script8.Parent = scriptsFrame
+script8.Text = ""
+
+script9.Name = "script specific button"
+script9.Size = UDim2.new(0.3, 0, 0.2, 0)
+script9.Position = UDim2.new()
+script9.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+script9.TextColor3 = Color3.fromRGB(255, 255, 255)
+script9.TextTransparency = 0
+script9.BackgroundTransparency = 0.7
+script9.Parent = scriptsFrame
+script9.Text = ""
+
+script1.Position = UDim2.new(0.0125, 0, 0.050, 0)
+script2.Position = UDim2.new(0.35, 0, 0.050, 0)
+script3.Position = UDim2.new(0.6885, 0, 0.050, 0)
+
+script4.Position = UDim2.new(0.0125, 0, 0.38, 0)
+script5.Position = UDim2.new(0.35, 0, 0.38, 0)
+script6.Position = UDim2.new(0.6885, 0, 0.38, 0)
+
+script7.Position = UDim2.new(0.0125, 0, 0.750, 0)
+script8.Position = UDim2.new(0.35, 0, 0.750, 0)
+script9.Position = UDim2.new(0.6885, 0, 0.750, 0)
+
+misc1.Name = "FPS counter"
+misc1.Size = UDim2.new(0.3, 0, 0.2, 0)
+misc1.Position = UDim2.new()
+misc1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+misc1.TextColor3 = Color3.fromRGB(255, 255, 255)
+misc1.TextTransparency = 0
+misc1.BackgroundTransparency = 0.7
+misc1.Parent = miscelaneousFrame
+misc1.Text = ""
+
+misc2.Name = "Server size counter"
+misc2.Size = UDim2.new(0.3, 0, 0.2, 0)
+misc2.Position = UDim2.new()
+misc2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+misc2.TextColor3 = Color3.fromRGB(255, 255, 255)
+misc2.TextTransparency = 0
+misc2.BackgroundTransparency = 0.7
+misc2.Parent = miscelaneousFrame
+misc2.Text = ""
+
+misc3.Name = "Server time counter"
+misc3.Size = UDim2.new(0.3, 0, 0.2, 0)
+misc3.Position = UDim2.new()
+misc3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+misc3.TextColor3 = Color3.fromRGB(255, 255, 255)
+misc3.TextTransparency = 0
+misc3.BackgroundTransparency = 0.7
+misc3.Parent = miscelaneousFrame
+misc3.Text = ""
+
+misc4.Name = "FE status"
+misc4.Size = UDim2.new(0.3, 0, 0.2, 0)
+misc4.Position = UDim2.new()
+misc4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+misc4.TextColor3 = Color3.fromRGB(255, 255, 255)
+misc4.TextTransparency = 0
+misc4.BackgroundTransparency = 0.7
+misc4.Parent = miscelaneousFrame
+misc4.Text = ""
+
+misc5.Name = "Ping"
+misc5.Size = UDim2.new(0.3, 0, 0.2, 0)
+misc5.Position = UDim2.new()
+misc5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+misc5.TextColor3 = Color3.fromRGB(255, 255, 255)
+misc5.TextTransparency = 0
+misc5.BackgroundTransparency = 0.7
+misc5.Parent = miscelaneousFrame
+misc5.Text = ""
+
+misc6.Name = "Memory usage counter"
+misc6.Size = UDim2.new(0.3, 0, 0.2, 0)
+misc6.Position = UDim2.new()
+misc6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+misc6.TextColor3 = Color3.fromRGB(255, 255, 255)
+misc6.TextTransparency = 0
+misc6.BackgroundTransparency = 0.7
+misc6.Parent = miscelaneousFrame
+misc6.Text = ""
+
+misc1.Position = UDim2.new(0.0125, 0, 0.050, 0)
+misc2.Position = UDim2.new(0.35, 0, 0.050, 0)
+misc3.Position = UDim2.new(0.6885, 0, 0.050, 0)
+
+misc4.Position = UDim2.new(0.0125, 0, 0.38, 0)
+misc5.Position = UDim2.new(0.35, 0, 0.38, 0)
+misc6.Position = UDim2.new(0.6885, 0, 0.38, 0)
+
+spawn(function()
+	while true do
+		misc3.Text = "Server Time: " .. tostring(math.floor(game:GetService('Workspace').DistributedGameTime))
+		wait(0.5)
+	end
+end)
+
+
+spawn(function()
+	while true do
+		misc2.Text = "Server Size: "..tostring(game:GetService('Players').NumPlayers)
+		wait(.5)
+	end
+end)
+
+spawn(function()
+	RunService.RenderStepped:Connect(function(frame)
+		misc1.Text = "FPS: "..(math.round(1/frame))
+	end)
+end)
+
+spawn(function()
+	while true do
+		local ping = game.Players.LocalPlayer:GetNetworkPing()
+		misc5.Text = "Ping: " .. tostring(math.floor(ping * 1000)) .. " ms"
+		wait(0.5)
+	end
+end)
+
+spawn(function()
+	while true do
+		local memoryUsage = stats:GetTotalMemoryUsageMb()
+		misc6.Text = "Mem: " .. tostring(math.floor(memoryUsage)) .. " MB"
+		wait(0.5)
+	end
+end)
+
+misc4.Text = "FE: "..tostring(filteringenabled)
+
+misc1.TextWrapped = true
+misc2.TextWrapped = true
+misc3.TextWrapped = true
+misc4.TextWrapped = true
+misc5.TextWrapped = true
+misc6.TextWrapped = true
+
+
+misc7.Name = "Walkspeed textbox"
+misc7.Size = UDim2.new(0.3, 0, 0.2, 0)
+misc7.Position = UDim2.new(0.15, 0, 0.750, 0)
+misc7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+misc7.TextColor3 = Color3.fromRGB(255, 255, 255)
+misc7.TextTransparency = 0
+misc7.BackgroundTransparency = 0.7
+misc7.Parent = miscelaneousFrame
+misc7.Text = ""
+misc7.PlaceholderText = "WalkSpeed"
+
+misc8.Name = "jump power textbox"
+misc8.Size = UDim2.new(0.3, 0, 0.2, 0)
+misc8.Position = UDim2.new(0.55, 0, 0.750, 0)
+misc8.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+misc8.TextColor3 = Color3.fromRGB(255, 255, 255)
+misc8.TextTransparency = 0
+misc8.BackgroundTransparency = 0.7
+misc8.Parent = miscelaneousFrame
+misc8.Text = ""
+misc8.PlaceholderText = "JumpPower"
+
+misc7.FocusLost:Connect(function(enterPressed)
+	local value = tonumber(misc7.Text)
+	local player = game.Players.LocalPlayer
+	if player and player.Character then
+		local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+		if humanoid then
+			humanoid.WalkSpeed = value or humanoid.WalkSpeed
+		end
+	end
+end)
+
+misc8.FocusLost:Connect(function(enterPressed)
+	local value = tonumber(misc8.Text)
+	local player = game.Players.LocalPlayer
+	if player and player.Character then
+		local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+		if humanoid then
+			humanoid.JumpPower = value or humanoid.JumpPower
+		end
+	end
+end)
+
+script1.Text = "Prison Life"
+script1.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/elliexmln/PrizzLife/main/pladmin.lua'))()
+end)
+
+
 
 
 game.StarterGui:SetCore("SendNotification", {
@@ -495,5 +774,5 @@ game.StarterGui:SetCore("SendNotification", {
     Duration = 5;
 })
 
-bar.Text = ">> ZwinUI2"
+bar.Text = ">> ZwinUI2, " ..tostring(name)
 -- Made by zwinplayer64/zawadzki
