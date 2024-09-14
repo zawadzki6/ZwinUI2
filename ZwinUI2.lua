@@ -429,7 +429,7 @@ universal3.BackgroundTransparency = 0.7
 universal3.TextTransparency = 0
 universal3.BorderSizePixel = 0
 universal3.Parent = universalFrame
-universal3.Text = "Domain X"
+universal3.Text = "Dex Explorer"
 
 universal4.Name = "Universal button 4"
 universal4.Size = UDim2.new(0.3, 0, 0.2, 0)
@@ -474,7 +474,7 @@ universal2.MouseButton1Click:Connect(function()
 end)
 
 universal3.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/DomainX/main/source',true))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/dex.lua',true))()
 end)
 
 universal4.MouseButton1Click:Connect(function()
@@ -764,6 +764,20 @@ script1.MouseButton1Click:Connect(function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/elliexmln/PrizzLife/main/pladmin.lua'))()
 end)
 
+script2.Text = "ESP + AimLock"
+script2.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/x39qc/MyRobloxScripts/main/ESP%2BAimbot'))()
+end)
+
+script3.Text = "Domain X"
+script3.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/DomainX/main/source',true))()
+end)
+
+script4.Text = "Lag Switch (X toggle)"
+script4.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://paste.gg/p/anonymous/d3492bd620bd4c46b54680ac80b0fa0d/files/161ddd9c992c4ceba3c298458d45188a/raw"))()
+end)
 
 
 
