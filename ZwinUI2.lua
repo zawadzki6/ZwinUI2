@@ -796,7 +796,7 @@ end)
 
 script8.Text = "Fly Gui"
 script8.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/zawadzki6/ZwinUI2/refs/heads/main/scripts/blackhole.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/zawadzki6/ZwinUI2/refs/heads/main/scripts/flygui.lua"))()
 end)
 
 
