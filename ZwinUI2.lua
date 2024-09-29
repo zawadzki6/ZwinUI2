@@ -12,6 +12,7 @@ local RunService = game:GetService("RunService")
 local name = game.Players.LocalPlayer.DisplayName
 local filteringenabled = game.Workspace.FilteringEnabled
 local stats = game:GetService("Stats")
+local CoreGui = game:GetService("CoreGui")
 
 
 local screenGui = Instance.new("ScreenGui")
@@ -69,9 +70,18 @@ local misc6 = Instance.new("TextLabel")
 local misc7 = Instance.new("TextBox")
 local misc8 = Instance.new("TextBox")
 
-screenGui.Parent = PlayerGui
+
+if _G.core == true then
+    screenGui.Parent = CoreGui
+else 
+    screenGui.Parent = PlayerGui
+end
+
 screenGui.ResetOnSpawn = false
 
+if _G.silent == true then
+    topBar.Visible = false
+end
 
 topBar.Name = "topBar"
 topBar.Size = UDim2.new(0.35, 0, 0.03, 0)
@@ -379,11 +389,14 @@ outputLabel.Transparency = 0.7
 outputLabel.TextTransparency = 0
 outputLabel.BorderSizePixel = 0
 outputLabel.Parent = outputFrame
-outputLabel.Text = "Console output will be displayed here...\n"
+outputLabel.Text = "Disabled for maintenance...\n"
 outputLabel.TextYAlignment = Enum.TextYAlignment.Top
 outputLabel.TextXAlignment = Enum.TextXAlignment.Left
 outputLabel.TextWrapped = true
 
+-- this will be unavailable due to a memory leak
+
+--[[
 local function onMessageOut(message, messageType)
     local currentText = outputLabel.Text
     outputLabel.Text = currentText .. "\n" .. message
@@ -397,6 +410,8 @@ local function onMessageOut(message, messageType)
 end
 
 LogService.MessageOut:Connect(onMessageOut)
+]]
+
 
 universal1.Name = "Universal button 1"
 universal1.Size = UDim2.new(0.3, 0, 0.2, 0)
