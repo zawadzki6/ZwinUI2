@@ -176,7 +176,7 @@ universalTab.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 universalTab.Transparency = 0.6
 universalTab.TextTransparency = 0
 universalTab.BorderSizePixel = 0
-universalTab.Text = "Universal"
+universalTab.Text = "Main"
 universalTab.TextColor3 = Color3.fromRGB(255, 255, 255)
 universalTab.Parent = main
 
@@ -237,7 +237,7 @@ universalFrame.Transparency = 0.5
 universalFrame.BorderSizePixel = 0
 universalFrame.Parent = main
 
-scriptsFrame.Name = "Game specific tab frame"
+scriptsFrame.Name = "script tab frame"
 scriptsFrame.Size = UDim2.new(0.75, 0, 0.9, 0)
 scriptsFrame.Position = UDim2.new(0.235, 0, 0.045, 0)
 scriptsFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -482,7 +482,7 @@ universal4.MouseButton1Click:Connect(function()
 end)
 
 universal5.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/o5u3/T0PK3K-REMAKE/scripts/Gravity.txt"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/zawadzki6/ZwinUI2/refs/heads/main/scripts/gravity%20gun.lua"))()
 end)
 
 universal6.MouseButton1Click:Connect(function()
@@ -498,7 +498,7 @@ universal6.MouseButton1Click:Connect(function()
 end)
 
 
-script1.Name = "Game specific button"
+script1.Name = "script button"
 script1.Size = UDim2.new(0.3, 0, 0.2, 0)
 script1.Position = UDim2.new()
 script1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -508,7 +508,7 @@ script1.BackgroundTransparency = 0.7
 script1.Parent = scriptsFrame
 script1.Text = ""
 
-script2.Name = "Game specific button"
+script2.Name = "script button"
 script2.Size = UDim2.new(0.3, 0, 0.2, 0)
 script2.Position = UDim2.new()
 script2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -518,7 +518,7 @@ script2.BackgroundTransparency = 0.7
 script2.Parent = scriptsFrame
 script2.Text = ""
 
-script3.Name = "Game specific button"
+script3.Name = "script button"
 script3.Size = UDim2.new(0.3, 0, 0.2, 0)
 script3.Position = UDim2.new()
 script3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -528,7 +528,7 @@ script3.BackgroundTransparency = 0.7
 script3.Parent = scriptsFrame
 script3.Text = ""
 
-script4.Name = "Game specific button"
+script4.Name = "script button"
 script4.Size = UDim2.new(0.3, 0, 0.2, 0)
 script4.Position = UDim2.new()
 script4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -538,7 +538,7 @@ script4.BackgroundTransparency = 0.7
 script4.Parent = scriptsFrame
 script4.Text = ""
 
-script5.Name = "Game specific button"
+script5.Name = "script button"
 script5.Size = UDim2.new(0.3, 0, 0.2, 0)
 script5.Position = UDim2.new()
 script5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -548,7 +548,7 @@ script5.BackgroundTransparency = 0.7
 script5.Parent = scriptsFrame
 script5.Text = ""
 
-script6.Name = "Game specific button"
+script6.Name = "script button"
 script6.Size = UDim2.new(0.3, 0, 0.2, 0)
 script6.Position = UDim2.new()
 script6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -558,7 +558,7 @@ script6.BackgroundTransparency = 0.7
 script6.Parent = scriptsFrame
 script6.Text = ""
 
-script7.Name = "Game specific button"
+script7.Name = "script button"
 script7.Size = UDim2.new(0.3, 0, 0.2, 0)
 script7.Position = UDim2.new()
 script7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -568,7 +568,7 @@ script7.BackgroundTransparency = 0.7
 script7.Parent = scriptsFrame
 script7.Text = ""
 
-script8.Name = "Game specific button"
+script8.Name = "script button"
 script8.Size = UDim2.new(0.3, 0, 0.2, 0)
 script8.Position = UDim2.new()
 script8.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -774,11 +774,30 @@ script3.MouseButton1Click:Connect(function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/DomainX/main/source',true))()
 end)
 
-script4.Text = "Lag Switch (X toggle)"
+script4.Text = "Lag Switch\n(X toggle)"
 script4.MouseButton1Click:Connect(function()
     loadstring(game:HttpGet("https://paste.gg/p/anonymous/d3492bd620bd4c46b54680ac80b0fa0d/files/161ddd9c992c4ceba3c298458d45188a/raw"))()
 end)
 
+script5.Text = "Annoying Admin\n(say .cmds)"
+script5.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/TheMightySource/FE-Annoying-Admin/main/Main.lua"))()
+end)
+
+script6.Text = "Break Joints (reset)"
+script6.MouseButton1Click:Connect(function()
+    game.Players.LocalPlayer.Character:BreakJoints()
+end)
+
+script7.Text = "Black Hole"
+script7.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/zawadzki6/ZwinUI2/refs/heads/main/scripts/blackhole.lua"))()
+end)
+
+script8.Text = "Fly Gui"
+script8.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/zawadzki6/ZwinUI2/refs/heads/main/scripts/blackhole.lua"))()
+end)
 
 
 game.StarterGui:SetCore("SendNotification", {
